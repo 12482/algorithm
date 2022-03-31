@@ -13,7 +13,7 @@ public class MyUtils {
      */
     public static void printArray(int[] arr) {
         for (int t : arr) {
-            System.out.print(t + " ");
+            System.out.print(t + " , ");
         }
         System.out.println();
     }

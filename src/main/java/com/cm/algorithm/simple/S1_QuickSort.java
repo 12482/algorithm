@@ -26,36 +26,39 @@ public class S1_QuickSort {
         if (start >= end) {
             return;
         }
-        int mid = start + (end - start) / 2;
-        // 把数组分成两部分
-        process(arr, start, mid);
-        process(arr, mid + 1, end);
-        // 合并两部分
-//        split(arr, start, mid, end);
+
+        int[] split = split(arr, start, end);
+        printArray(arr);
+        process(arr, start, split[0]);
+        process(arr, split[1] + 1, end);
     }
 
-    private static void split(int[] arr, int start, int end) {
+    private static int[] split(int[] arr, int start, int end) {
         int compareValue = arr[end];
-        int lessIndex = -1;
+        int lessIndex = start-1;
         int moreIndex = end;
-        for (int i = start; i <= end; i++) {
+        for (int i = start; i < moreIndex; i++) {
             if (arr[i] > compareValue) {
-
+                swap(arr, i,moreIndex -1 );
+                moreIndex --;
+                i--;
             } else if (arr[i] < compareValue) {
-
-            } else {
-
+                swap(arr, i,lessIndex+1);
+                lessIndex ++;
             }
 
         }
+        swap(arr, end,moreIndex);
+        return new int[]{lessIndex,moreIndex};
     }
 
     public static void main(String[] args) {
         int times = 50000;
-        int maxSize = 1000;
-        int maxValue = Integer.MAX_VALUE;
+        int maxSize = 50;
+        int maxValue = 10;
 
-        int[] arr = generateRandomArray(maxSize, maxValue);
+//        int[] arr = generateRandomArray(maxSize, maxValue);
+        int[] arr = new int[]{ 6 , 9 , 10 , 9 , 9 , 8 };
         int[] arr1 = copyArray(arr);
         int[] arr2 = copyArray(arr);
         boolean success = true;
