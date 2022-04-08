@@ -1,7 +1,6 @@
-package com.cm.algorithm.simple.tree;
+package com.study.algorithm.simple.tree;
 
 /**
- * @author PA_ChenMin(cm @ singhand.com)
  * @date 2022/4/2 下午4:25
  * @since
  */

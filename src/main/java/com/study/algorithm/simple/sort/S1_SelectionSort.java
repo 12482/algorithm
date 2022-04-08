@@ -1,9 +1,9 @@
-package com.cm.algorithm.simple.sort;
+package com.study.algorithm.simple.sort;
 
+
+import com.study.algorithm.util.MyUtils;
 
 import java.util.Arrays;
-
-import static com.cm.algorithm.util.MyUtils.*;
 
 /**
  * 选择排序:
@@ -29,7 +29,7 @@ public class S1_SelectionSort {
                     minIndex = j;
                 }
             }
-            swap(arr,i,minIndex);
+            MyUtils.swap(arr,i,minIndex);
         }
     }
 
@@ -38,17 +38,18 @@ public class S1_SelectionSort {
         int maxSize = 1000;
         int maxValue = Integer.MAX_VALUE;
 
-        int[] arr = generateRandomArray(maxSize, maxValue);
-        int[] arr1 = copyArray(arr);
-        int[] arr2 = copyArray(arr);
+
         boolean success = true;
         System.out.println("start ...");
         for (int i = 0; i < times; i++) {
+            int[] arr = MyUtils.generateRandomArray(maxSize, maxValue);
+            int[] arr1 = MyUtils.copyArray(arr);
+            int[] arr2 = MyUtils.copyArray(arr);
             selectionSort(arr1);
             Arrays.sort(arr2);
-            if (!arrayEquals(arr1, arr2)) {
-                printArray(arr1);
-                printArray(arr2);
+            if (!MyUtils.arrayEquals(arr1, arr2)) {
+                MyUtils.printArray(arr1);
+                MyUtils.printArray(arr2);
                 System.out.println("error ...");
                 success = false;
                 break;

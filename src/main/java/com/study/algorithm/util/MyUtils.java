@@ -1,4 +1,4 @@
-package com.cm.algorithm.util;
+package com.study.algorithm.util;
 
 
 /**
@@ -9,6 +9,7 @@ public class MyUtils {
 
     /**
      * 打印数组
+     *
      * @param arr
      */
     public static void printArray(int[] arr) {
@@ -20,6 +21,7 @@ public class MyUtils {
 
     /**
      * 将数组arr的m位置和n位置的元素交换
+     *
      * @param arr
      * @param m
      * @param n
@@ -46,13 +48,39 @@ public class MyUtils {
         int size = (int) (Math.random() * (maxSize + 1));
         int[] arr = new int[size];
         for (int i = 0; i < arr.length; i++) {
-            arr[i] = (int) (Math.random() * (maxValue + 1));
+            // - 生成负数
+            arr[i] = (int) (Math.random() * (maxValue + 1)) - (int) (Math.random() * (maxValue + 1));
+        }
+        return arr;
+    }
+
+
+    /**
+     * 构造升序数组
+     *
+     * @param maxLength
+     * @param maxValue
+     * @return
+     */
+    public static int[] generateAscArray(int maxLength, int maxValue) {
+        int length = (int) (Math.random() * (maxLength + 1));
+        int[] arr = new int[length];
+
+        int cur = 0;
+        for (int i = 0; i < arr.length; i++) {
+            int value = 0;
+            do {
+                value = cur + (int) (Math.random() * (maxValue + 1)) - (int) (Math.random() * (maxValue + 1));
+            } while (i != 0 && cur > value);
+            cur = value;
+            arr[i] = value;
         }
         return arr;
     }
 
     /**
      * 拷贝数组
+     *
      * @param arr
      * @return
      */
@@ -67,6 +95,7 @@ public class MyUtils {
 
     /**
      * 判断数组是否相等
+     *
      * @param arr1
      * @param arr2
      * @return
