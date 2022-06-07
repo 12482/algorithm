@@ -20,6 +20,7 @@ public class FindTwoOddTimesNumber {
         }
         //取整数的最后一个1代表的值
         int lastOneNum = eor & (~eor + 1);
+        // int lastOneNum = eor & (-eor);
 
         int n1 = 0;
         for (int i = 0; i < arr.length; i++) {
